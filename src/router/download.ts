@@ -30,9 +30,7 @@ export async function getRule(): Promise<BaseRuleClass> {
       ruleClass = dingdiann();
       break;
     }
-    case "www.biquge66.com":
-    case "www.lewenn.com":
-    case "www.xkzw.org": {
+    case "www.lewenn.com": {
       const { Xkzw } = await import("../rules/special/reprint/xkzw");
       ruleClass = Xkzw;
       break;
@@ -520,6 +518,13 @@ export async function getRule(): Promise<BaseRuleClass> {
         "../rules/onePage/colorful-fantasybooks"
       );
       ruleClass = fantasybooks();
+      break;
+    }
+    case "www.qu-la.com":
+    case "www.biquge66.com":
+    case "www.xkzw.org": {
+      const { dizishu1 } = await import("../rules/onePage/dizishu1");
+      ruleClass = dizishu1();
       break;
     }
     case "www.dizishu.com": {
