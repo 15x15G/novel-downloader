@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        小说下载器测试脚本
-// @version     4.9.3.769
+// @version     4.9.3.770
 // @author      bgme
 // @description 小说下载器测试脚本
 // @match       *://www.ciweimao.com/chapter-list/*
@@ -121,6 +121,7 @@
 // @match       *://www.256wenku.com/read/*/index.html
 // @match       *://www.256wenku.com/read/*/
 // @match       *://www.biquge66.com/biquge*/
+// @match       *://www.qu-la.com/booktxt/*/
 // @match       *://*.lofter.com/
 // @match       *://*.lofter.com/?page=*
 // @match       *://www.lwxs9.org/*/*/

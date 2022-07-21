@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           小说下载器
-// @version        4.9.3.769
+// @version        4.9.3.770
 // @author         bgme
 // @description    一个可扩展的通用型小说下载器。
 // @supportURL     https://github.com/404-novel-project/novel-downloader
@@ -122,6 +122,7 @@
 // @match          *://www.256wenku.com/read/*/index.html
 // @match          *://www.256wenku.com/read/*/
 // @match          *://www.biquge66.com/biquge*/
+// @match          *://www.qu-la.com/booktxt/*/
 // @match          *://*.lofter.com/
 // @match          *://*.lofter.com/?page=*
 // @match          *://www.lwxs9.org/*/*/

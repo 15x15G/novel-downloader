@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           小说下载器
-// @version        4.9.3.769
+// @version        4.9.3.770
 // @author         bgme
 // @description    一个可扩展的通用型小说下载器。
 // @supportURL     https://github.com/404-novel-project/novel-downloader
@@ -122,6 +122,7 @@
 // @match          *://www.256wenku.com/read/*/index.html
 // @match          *://www.256wenku.com/read/*/
 // @match          *://www.biquge66.com/biquge*/
+// @match          *://www.qu-la.com/booktxt/*/
 // @match          *://*.lofter.com/
 // @match          *://*.lofter.com/?page=*
 // @match          *://www.lwxs9.org/*/*/
@@ -10064,6 +10065,53 @@ return new Request(url, {
         else {
             return null;
         }
+    },
+    contentPatch: (content) => content,
+    overrideConstructor: (classThis) => {
+        const rawBookParse = classThis.bookParse;
+        classThis.bookParse = async () => {
+            const book = (await Reflect.apply(rawBookParse, classThis, []));
+            const chapters = book.chapters;
+            book.chapters = (0,_lib_rule__WEBPACK_IMPORTED_MODULE_2__/* .deDuplicate */ .uh)(chapters);
+            return book;
+        };
+        return classThis;
+    },
+});
+
+
+/***/ }),
+
+/***/ "./src/rules/onePage/dizishu1.ts":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dizishu1": () => (/* binding */ dizishu1)
+/* harmony export */ });
+/* harmony import */ var _lib_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/lib/http.ts");
+/* harmony import */ var _lib_rule__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/lib/rule.ts");
+/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/rules/onePage/template.ts");
+
+
+
+const dizishu1 = () => (0,_template__WEBPACK_IMPORTED_MODULE_0__/* .mkRuleClass */ .x)({
+    bookUrl: document.location.href,
+    bookname: document.querySelector(".book-text > h1").innerText.trim(),
+    author: document.querySelector(".book-text > span").innerText
+        .replace("著", "")
+        .trim(),
+    introDom: document.querySelector(".intro"),
+    introDomPatch: (introDom) => introDom,
+    coverUrl: document.querySelector("#fengmian img")
+        ?.src,
+    aList: document.querySelectorAll("#list > .book-chapter-list .cf li > a"),
+    sections: document.querySelectorAll("#list > .book-chapter-list > h3"),
+    getSName: (sElem) => sElem.innerText.trim(),
+    getContentFromUrl: async (chapterUrl, chapterName, charset) => {
+        const doc = await (0,_lib_http__WEBPACK_IMPORTED_MODULE_1__/* .getHtmlDOM */ .dL)(chapterUrl, charset);
+        return doc.querySelector(".txt");
     },
     contentPatch: (content) => content,
     overrideConstructor: (classThis) => {
@@ -20905,9 +20953,7 @@ async function getRule() {
             ruleClass = dingdiann();
             break;
         }
-        case "www.biquge66.com":
-        case "www.lewenn.com":
-        case "www.xkzw.org": {
+        case "www.lewenn.com": {
             const { Xkzw } = await Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, "./src/rules/special/reprint/xkzw.ts"));
             ruleClass = Xkzw;
             break;
@@ -21379,6 +21425,13 @@ async function getRule() {
         case "colorful-fantasybooks.com": {
             const { fantasybooks } = await Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, "./src/rules/onePage/colorful-fantasybooks.ts"));
             ruleClass = fantasybooks();
+            break;
+        }
+        case "www.qu-la.com":
+        case "www.biquge66.com":
+        case "www.xkzw.org": {
+            const { dizishu1 } = await Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, "./src/rules/onePage/dizishu1.ts"));
+            ruleClass = dizishu1();
             break;
         }
         case "www.dizishu.com": {
