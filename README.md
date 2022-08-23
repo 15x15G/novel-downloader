@@ -1,11 +1,5 @@
 # 小说下载器
 
-**因现实事务繁忙，本项目暂时仅进行最低限度维护。**
-
-**如需添加新站点，可自行按照现有规则文件书写，同时欢迎各位PR。**
-
--------------------
-
 一个**可扩展的**通用型小说下载器。
 
 ## 关于404小说文库项目
@@ -82,6 +76,7 @@ EPUB文件请使用相应阅读器阅读。
 | [寒武纪年原创网](https://www.hanwujinian.com/)    |✅|✅||
 | [哔哩哔哩漫画](https://manga.bilibili.com/)      |✅|✅||
 | [息壤中文网](https://www.xrzww.com/)            |✅|✅||
+| [独阅读](https://www.duread8.com/)            |✅|✅||
 | [轻之文库轻小说](https://www.linovel.net/)        |✅|❌| VIP章节仅支持APP查看                                                                                                                                  |
 | [纵横中文网](http://www.zongheng.com/)          |✅|❌||
 | [花语女生网](http://huayu.zongheng.com/)        |✅|❌||
@@ -96,7 +91,7 @@ EPUB文件请使用相应阅读器阅读。
 | [努努书坊](https://www.kanunu8.com/)           |✅|❎| 格式众多，如发现不支持页面敬请反馈。                                                                                                                             |
 | [真白萌](https://masiro.me/)                  |✅|❎||
 | [天涯书库](https://www.tianyabooks.com/)       |✅|❎||
-| [爱青果](https://www.iqingguo.com/)        |✅|❎||
+| [爱青果](https://www.iqingguo.com/)           |✅|❎||
 | [カクヨム](https://kakuyomu.jp/)               |✅|❎||
 | [小説家になろう](https://syosetu.com/)            |✅|❎||
 | [ハーメルン](https://syosetu.org/)              |✅|❎||
